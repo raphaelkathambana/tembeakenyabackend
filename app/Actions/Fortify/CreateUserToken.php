@@ -15,8 +15,7 @@ class CreateUserToken
         }
 
         // Create a token for the authenticated user
-        $token = $request->user()->createToken('login-token')->plainTextToken;
-
+        $token = $request->user()->createToken($request->device_name, ['hiker'])->plainTextToken;
         // Store the token in the session
         session(['login_token' => $token]);
 
