@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppRedirectController;
+use Laravel\Fortify\Http\Controllers\NewPasswordController;
+use Laravel\Fortify\RoutePath;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,9 @@ use App\Http\Controllers\AppRedirectController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get(RoutePath::for('password.reset', 'v1/reset-password/{token}'), [NewPasswordController::class, 'create'])
+->middleware(['guest:'.config('fortify.guard')])
+->name('api.password.reset');
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/get-token', function (Request $request) {
         //get currently authenticated user

@@ -31,11 +31,11 @@ class AppServiceProvider extends ServiceProvider
             ->line(Lang::get('If you did not create an account, no further action is required.'));
         });
         ResetPassword::createUrlUsing(function($notifiable, $token) {
-            return 'https://tembeakenyabackend.fly.dev/' . $token. '?email=' . $notifiable->getEmailForPasswordReset();
-            // return url(route('api.password.reset', [
-            //     'token' => $this->token,
-            //     'email' => $notifiable->getEmailForPasswordReset(),
-            // ], false));
+            // return 'https://tembeakenyabackend.fly.dev/api/v1/reset-password/' . $token. '?email=' . $notifiable->getEmailForPasswordReset();
+            return url(route('api.password.reset', [
+                'token' => $this->token,
+                'email' => $notifiable->getEmailForPasswordReset(),
+            ], false));
         });
     }
 }
