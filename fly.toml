@@ -46,5 +46,5 @@ memory = '1gb'
 cpu_kind = 'shared'
 cpus = 1
 
-[deploy]
-release_command = "php /var/www/html/artisan migrate --force"
+# [deploy]
+# release_command = "php /var/www/html/artisan migrate --force"
