@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         ResetPassword::createUrlUsing(function ($notifiable, $token) {
-            return 'http://192.168.100.27:8000/api/v1/reset-password/{$token}?email={$notifiable->getEmailForPasswordReset()}';
+            return 'https://tembeakenyabackend.fly.dev/api/v1/reset-password/{$token}?email={$notifiable->getEmailForPasswordReset()}';
         });
     }
 }
