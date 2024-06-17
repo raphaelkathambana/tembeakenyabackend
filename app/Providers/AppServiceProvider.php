@@ -30,5 +30,8 @@ class AppServiceProvider extends ServiceProvider
             ->action(Lang::get('Verify Email Address'), $verificationUrl)
             ->line(Lang::get('If you did not create an account, no further action is required.'));
         });
+        ResetPassword::createUrlUsing(function($notifiable, $token) {
+            return 'https://tembeakenyabackend.fly.dev/{$token}?email={$notifiable->getEmailForPasswordReset()}';
+        });
     }
 }
