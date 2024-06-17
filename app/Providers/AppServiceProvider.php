@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
         ResetPassword::createUrlUsing(function($notifiable, $token) {
             // return 'https://tembeakenyabackend.fly.dev/api/v1/reset-password/' . $token. '?email=' . $notifiable->getEmailForPasswordReset();
             return url(route('api.password.reset', [
-                'token' => $this->token,
+                'token' => $token,
                 'email' => $notifiable->getEmailForPasswordReset(),
             ], false));
         });
