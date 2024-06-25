@@ -9,6 +9,8 @@ use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
 use App\Http\Responses\APILoginResponse;
 use App\Http\Responses\APILogoutResponse;
+use App\Http\Responses\APIPasswordUpdateResponse;
+use App\Http\Responses\APIProfileInformationUpdatedResponse;
 use App\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
@@ -21,6 +23,8 @@ use Laravel\Fortify\Actions\AttemptToAuthenticate;
 use Laravel\Fortify\Actions\EnsureLoginIsNotThrottled;
 use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
 use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
+use Laravel\Fortify\Contracts\PasswordUpdateResponse;
+use Laravel\Fortify\Contracts\ProfileInformationUpdatedResponse;
 use Laravel\Fortify\Features;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Http\Responses\LoginResponse;
@@ -38,6 +42,12 @@ class FortifyServiceProvider extends ServiceProvider
 
         // Bind custom LogoutResponse
         $this->app->singleton(LogoutResponse::class, APILogoutResponse::class);
+
+        // Bind custom PasswordUpdateResponse
+        $this->app->singleton(PasswordUpdateResponse::class, APIPasswordUpdateResponse::class);
+
+        // Bind custom ProfileInformationUpdatedResponse
+        $this->app->singleton(ProfileInformationUpdatedResponse::class, APIProfileInformationUpdatedResponse::class);
     }
 
     /**
