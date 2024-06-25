@@ -14,8 +14,8 @@ class UserSeeder extends Seeder
     {
         // create a super administrator
         \App\Models\User::factory()->create([
-            'firstname' => 'Super',
-            'lastname' => 'Admin',
+            'firstName' => 'Super',
+            'lastName' => 'Admin',
             'username' => 'superadmin',
             'roleNo' => 3,
             'email' => 'codeclimberske@gmail.com',

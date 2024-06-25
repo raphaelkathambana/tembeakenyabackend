@@ -20,8 +20,8 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input): User
     {
         Validator::make($input, [
-            'firstname' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
+            'firstName' => ['required', 'string', 'max:255'],
+            'lastName' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
                 'string',
@@ -33,8 +33,8 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
         return User::create([
-            'firstname' => $input['firstname'],
-            'lastname' => $input['lastname'],
+            'firstName' => $input['firstName'],
+            'lastName' => $input['lastName'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
             'roleNo' => 1, // default role is hiker
