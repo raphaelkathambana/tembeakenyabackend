@@ -25,8 +25,8 @@ class GroupController extends Controller
      */
     public function store(StoreGroupRequest $request)
     {
-        // validate the request
-        $request->validated();
+        // authorize the request
+        $this->authorize('create', Group::class);
         // create a new group
         $group = new Group();
         $group->groupName = $request->groupName;

@@ -34,7 +34,7 @@ class GroupPolicy
     public function create(User $user)
     {
         // created only by guides or super admins
-        return $user->role() === 2 || $user->role() === 3
+        return $user->role === 2 || $user->role === 3
             ? Response::allow()
             : Response::deny('You are not authorized to create a group.');
     }
