@@ -80,6 +80,7 @@ Route::middleware('auth:sanctum')->group(function () {
     ->middleware('ability:admin:functions, guide:functions');
 
     Route::get('/groups/{group}', [GroupController::class, 'show']);
+    Route::get('/groups', [GroupController::class, 'index']);
 
     Route::post('/groups/{group}/members/add', [GroupController::class, 'storeMember']);
     Route::post('/groups/{group}/members/remove', [GroupController::class, 'removeMember']);
@@ -90,7 +91,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Route::get('/groups/{group}/edit', [GroupController::class, 'edit']);
     // Route::get('/groups/create', [GroupController::class, 'create']);
-    // Route::get('/groups', [GroupController::class, 'index']);
     // Route::get('/groups/{group}/members', [GroupController::class, 'members']);
     // Route::get('/groups/{group}/members/add', [GroupController::class, 'addMember']);
     // Route::get('/groups/{group}/members/{user}', [GroupController::class, 'showMember']);

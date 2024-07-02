@@ -11,6 +11,16 @@ use App\Http\Requests\UpdateGroupRequest;
 class GroupController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        // get all groups
+        $groups = Group::all();
+        // return a response
+        return response()->json($groups, 200);
+    }
+    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreGroupRequest $request)
