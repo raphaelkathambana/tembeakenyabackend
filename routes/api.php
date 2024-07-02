@@ -69,7 +69,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     // Group Routes
-    Route::apiResource('groups', GroupController::class);
+    // Route::apiResource('groups', GroupController::class);
     Route::post('/groups/{group}/update', [GroupController::class, 'update'])
     ->middleware('ability:admin:functions, guide:functions');
 
