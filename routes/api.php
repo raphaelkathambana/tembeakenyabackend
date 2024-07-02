@@ -69,24 +69,24 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     // Group Routes
-    // Route::apiResource('groups', GroupController::class);
-    Route::post('/groups/{group}/update', [GroupController::class, 'update'])
-    ->middleware('ability:admin:functions, guide:functions');
+    Route::apiResource('groups', GroupController::class);
+    // Route::post('/groups/{group}/update', [GroupController::class, 'update'])
+    // ->middleware('ability:admin:functions, guide:functions');
 
-    Route::post('/groups/{group}/delete', [GroupController::class, 'destroy'])
-    ->middleware('abilities:admin:functions');
+    // Route::post('/groups/{group}/delete', [GroupController::class, 'destroy'])
+    // ->middleware('abilities:admin:functions');
 
-    Route::post('/groups/create', [GroupController::class, 'store']);
+    // Route::post('/groups/create', [GroupController::class, 'store']);
 
-    Route::get('/groups/{group}', [GroupController::class, 'show']);
-    Route::get('/groups', [GroupController::class, 'index']);
+    // Route::get('/groups/{group}', [GroupController::class, 'show']);
+    // Route::get('/groups', [GroupController::class, 'index']);
 
-    Route::post('/groups/{group}/members/add', [GroupController::class, 'storeMember']);
-    Route::post('/groups/{group}/members/remove', [GroupController::class, 'removeMember']);
-    Route::post('/groups/{group}/members/remove-all', [GroupController::class, 'removeAllMembers']);
-    Route::post('/groups/{group}/members/update', [GroupController::class, 'updateMember']);
-    Route::post('/groups/{group}/members/{user}/update', [GroupController::class, 'updateMember']);
-    Route::post('/groups/{group}/members/{user}/delete', [GroupController::class, 'destroyMember']);
+    // Route::post('/groups/{group}/members/add', [GroupController::class, 'storeMember']);
+    // Route::post('/groups/{group}/members/remove', [GroupController::class, 'removeMember']);
+    // Route::post('/groups/{group}/members/remove-all', [GroupController::class, 'removeAllMembers']);
+    // Route::post('/groups/{group}/members/update', [GroupController::class, 'updateMember']);
+    // Route::post('/groups/{group}/members/{user}/update', [GroupController::class, 'updateMember']);
+    // Route::post('/groups/{group}/members/{user}/delete', [GroupController::class, 'destroyMember']);
 
     // Route::get('/groups/{group}/edit', [GroupController::class, 'edit']);
     // Route::get('/groups/create', [GroupController::class, 'create']);
