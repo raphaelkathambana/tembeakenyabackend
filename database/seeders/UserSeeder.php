@@ -37,11 +37,11 @@ class UserSeeder extends Seeder
 
         // create a hiker with a specific email
         \App\Models\User::factory()->create([
-            'firstName' => 'Raphael',
-            'lastName' => 'Kathambana',
-            'username' => 'raphkath',
+            'firstName' => 'Betty',
+            'lastName' => 'Bauxer',
+            'username' => 'bethtes',
             'roleNo' => 1,
-            'email' => 'raphael.kathambana@strathmore.edu',
+            'email' => 'bethelhemtesfaye95@gmail.com',
         ]);
 
         // create a hiker with a specific email that is unverified
