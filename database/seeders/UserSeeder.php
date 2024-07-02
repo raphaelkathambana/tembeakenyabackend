@@ -20,5 +20,37 @@ class UserSeeder extends Seeder
             'roleNo' => 3,
             'email' => 'codeclimberske@gmail.com',
         ]);
+
+        // create a guide
+        \App\Models\User::factory()->create([
+            'firstName' => 'Hike',
+            'lastName' => 'Guide',
+            'username' => 'guide',
+            'roleNo' => 2,
+            'email' => 'hikeguide@example.com',
+        ]);
+
+        // create 3 hikers
+        \App\Models\User::factory()->count(5)->create([
+            'roleNo' => 1,
+        ]);
+
+        // create a hiker with a specific email
+        \App\Models\User::factory()->create([
+            'firstName' => 'Raphael',
+            'lastName' => 'Kathambana',
+            'username' => 'raphkath',
+            'roleNo' => 1,
+            'email' => 'raphael.kathambana@strathmore.edu',
+        ]);
+
+        // create a hiker with a specific email that is unverified
+        \App\Models\User::factory()->unverified()->create([
+            'firstName' => 'Raph',
+            'lastName' => 'Kath',
+            'username' => 'raphaelkathambana',
+            'roleNo' => 1,
+            'email' => 'maya12raph@gmail.com',
+        ]);
     }
 }
