@@ -14,10 +14,34 @@ class CreateUserToken
             throw new \Exception('User model does not use HasApiTokens trait.');
         }
 
-        // Create a token for the authenticated user
-        $token = $request->user()->createToken($request->device_name, ['hiker'])->plainTextToken;
-        // Store the token in the session
-        session(['login_token' => $token]);
+        // Check the user role
+        switch ($request->user()->role) {
+            case '1':
+                // Create a token for the authenticated user
+                $token = $request->user()->createToken($request->device_name, ['hiker:functions'])->plainTextToken;
+                // Store the token in the session
+                session(['login_token' => $token]);
+                break;
+            case '2':
+                // Create a token for the authenticated user
+                $token = $request->user()->createToken($request->device_name, ['guide:functions'])->plainTextToken;
+                // Store the token in the session
+                session(['login_token' => $token]);
+                break;
+            case '3':
+                // Create a token for the authenticated user
+                $token = $request->user()->createToken($request->device_name, ['admin:functions'])->plainTextToken;
+                // Store the token in the session
+                session(['login_token' => $token]);
+                break;
+            default:
+                // Create a token for the authenticated user
+                $token = $request->user()->createToken($request->device_name, ['user:functions'])->plainTextToken;
+                // Store the token in the session
+                session(['login_token' => $token]);
+                break;
+        }
+
 
         // Call the next class in the pipeline
         return $next($request);
