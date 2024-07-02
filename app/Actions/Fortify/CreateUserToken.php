@@ -15,7 +15,7 @@ class CreateUserToken
         }
 
         // Check the user role
-        switch ($request->user()->roleNo) {
+        switch ($request->user()->role()) {
             case '1':
                 // Create a token for the authenticated user
                 $token = $request->user()->createToken($request->device_name, ['hiker:functions'])->plainTextToken;

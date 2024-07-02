@@ -32,7 +32,7 @@ Route::middleware('auth:sanctum')->group(function () {
         $user = $request->user();
         //create a token for the user
         // Check the user role
-        switch ($user()->roleNo) {
+        switch ($user()->role()) {
             case '1':
                 // Create a token for the authenticated user
                 $token = $request->user()->createToken($request->device_name, ['hiker:functions'])->plainTextToken;

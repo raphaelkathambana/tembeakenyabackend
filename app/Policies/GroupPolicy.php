@@ -34,7 +34,7 @@ class GroupPolicy
     public function create(User $user)
     {
         // created only by guides or super admins
-        return $user->roleNo === 2 || $user->roleNo === 3
+        return $user->role() === 2 || $user->role() === 3
             ? Response::allow()
             : Response::deny('You are not authorized to create a group.');
     }
@@ -45,7 +45,7 @@ class GroupPolicy
     public function update(User $user, Group $group)
     {
         // updates only by guides who are in the group or super admins
-        return ($user->roleNo === 2 && $user->groupNo === $group->groupNo) || $user->roleNo === 3
+        return ($user->role() === 2 && $user->groupNo === $group->groupNo) || $user->role() === 3
             ? Response::allow()
             : Response::deny('You are not authorized to update this group.');
     }
@@ -56,7 +56,7 @@ class GroupPolicy
     public function delete(User $user, Group $group)
     {
         // deleted only by a super admin
-        return $user->roleNo === 3
+        return $user->role() === 3
             ? Response::allow()
             : Response::deny('You are not authorized to delete this group.');
     }
