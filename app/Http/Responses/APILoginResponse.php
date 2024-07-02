@@ -13,7 +13,8 @@ class APILoginResponse implements LoginResponseContract
             'two_factor' => false,
             'message' => 'Logged in successfully.',
             'user' => $request->user(),
-            'token' => session('login_token') // Retrieve the token from the session
+            'token' => session('login_token'), // Retrieve the token from the session
+            'role' => session('maybe_role'), // Retrieve the role from the session
         ]);
     }
 }
