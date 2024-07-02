@@ -76,8 +76,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/groups/{group}/delete', [GroupController::class, 'destroy'])
     ->middleware('abilities:admin:functions');
 
-    Route::post('/groups/create', [GroupController::class, 'store'])
-    ->middleware('ability:admin:functions, guide:functions');
+    Route::post('/groups/create', [GroupController::class, 'store']);
 
     Route::get('/groups/{group}', [GroupController::class, 'show']);
     Route::get('/groups', [GroupController::class, 'index']);
