@@ -15,10 +15,14 @@ class CreateUserToken
         }
 
         // Check the user role
-        if (!$request->user()->roleNo != null && !str_contains($request->user()->roleNo, '123')) {
+        if ($request->user()->roleNo == null) {
             throw new \Exception('User role is not set.');
+            // return $next($request);
+
         }
-        switch ($request->user()->roleNo) {
+        // create a user variable
+        $role = $request->user()->roleNo;
+        switch ($role) {
             case '1':
                 // Create a token for the authenticated user
                 $token = $request->user()->createToken($request->device_name, ['hiker:functions'])->plainTextToken;
