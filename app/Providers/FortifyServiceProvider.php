@@ -79,8 +79,8 @@ class FortifyServiceProvider extends ServiceProvider
                     config('fortify.limiters.login') ? null : EnsureLoginIsNotThrottled::class,
                     Features::enabled(Features::twoFactorAuthentication()) ? RedirectIfTwoFactorAuthenticatable::class : null,
                     AttemptToAuthenticate::class,
-                    PrepareAuthenticatedSession::class,
                     CreateUserToken::class,
+                    PrepareAuthenticatedSession::class,
             ]);
         });
         Fortify::authenticateUsing(function (Request $request) {
