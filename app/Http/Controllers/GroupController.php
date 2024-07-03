@@ -41,7 +41,7 @@ class GroupController extends Controller
     public function show($id)
     {
         // get the group
-        $group = Group::findOrFail($id);
+        $group = Group::findOrFail($id, 'groupID');
         // return the group
         return response()->json($group, 200);
     }
