@@ -28,28 +28,24 @@ class CreateUserToken
                 $token = $request->user()->createToken($request->device_name, ['hiker:functions'])->plainTextToken;
                 // Store the token in the session
                 session(['login_token' => $token]);
-                session(['maybe_role' => $role]);
                 break;
             case 2:
                 // Create a token for the authenticated user
                 $token = $request->user()->createToken($request->device_name, ['guide:functions'])->plainTextToken;
                 // Store the token in the session
                 session(['login_token' => $token]);
-                session(['maybe_role' => $role]);
                 break;
             case 3:
                 // Create a token for the authenticated user
                 $token = $request->user()->createToken($request->device_name, ['admin:functions'])->plainTextToken;
                 // Store the token in the session
                 session(['login_token' => $token]);
-                session(['maybe_role' => $role]);
                 break;
             default:
                 // Create a token for the authenticated user
                 $token = $request->user()->createToken($request->device_name, ['user:functions'])->plainTextToken;
                 // Store the token in the session
                 session(['login_token' => $token]);
-                session(['maybe_role' => $role]);
                 break;
         }
 

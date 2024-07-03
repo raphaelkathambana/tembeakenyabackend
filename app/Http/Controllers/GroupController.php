@@ -26,7 +26,7 @@ class GroupController extends Controller
     public function store(StoreGroupRequest $request)
     {
         // authorize the request
-        // $this->authorize('create', Group::class);
+        $this->authorize('create', Group::class);
         // create a new group
         $group = new Group();
         $group->groupName = $request->groupName;
@@ -38,8 +38,10 @@ class GroupController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Group $group)
+    public function show($id)
     {
+        // get the group
+        $group = Group::findOrFail($id);
         // return the group
         return response()->json($group, 200);
     }
