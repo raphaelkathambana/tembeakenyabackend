@@ -26,7 +26,7 @@ class GroupController extends Controller
     public function store(StoreGroupRequest $request)
     {
         // authorize the request
-        // $this->authorize('create', Group::class);
+        $this->authorize('create', Group::class);
         // create a new group
         $group = new Group();
         $group->groupName = $request->groupName;
@@ -51,8 +51,8 @@ class GroupController extends Controller
      */
     public function update(UpdateGroupRequest $request, Group $group)
     {
-        // validate the request
-        $request->validated();
+        // authorize the request
+        $this->authorize('update', $group);
         // update the group
         $group->forceFill([
             'groupName' => $request['groupName'],
