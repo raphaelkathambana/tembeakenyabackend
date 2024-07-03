@@ -8,7 +8,7 @@ class APIGroupUpdatedResponse
     {
         return response()->json([
             'message' => 'Group details updated successfully',
-            'group' => $request->group
+            'group' => $request->group()
         ], 200);
     }
 }
