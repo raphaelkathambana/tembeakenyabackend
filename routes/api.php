@@ -1,6 +1,13 @@
 <?php
 
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\GroupHikeAttendeeController;
+use App\Http\Controllers\GroupHikeController;
+use App\Http\Controllers\HikeController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\UserController;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppRedirectController;
@@ -19,7 +26,7 @@ use Laravel\Fortify\RoutePath;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    return new UserResource($request->user()->load(['groups', 'guideAdminsGroups', 'hikes', 'reviews']));
 });
 
 Route::get(RoutePath::for('password.reset', 'v1/reset-password/{token}'), [NewPasswordController::class, 'create'])
@@ -69,6 +76,26 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     // Group Routes
     Route::apiResource('groups', GroupController::class);
+    Route::post('groups/{group}/approve-member/{user}', [GroupController::class, 'approveMember']);
+    Route::post('groups/{group}/reject-member/{user}', [GroupController::class, 'rejectMember']);
+    Route::get('groups/{group}/members', [GroupController::class, 'members']);
+    Route::get('groups/{group}/join-requests', [GroupController::class, 'joinRequests']);
+    Route::post('groups/{group}/request-to-join', [GroupController::class, 'requestToJoin']);
+
+    Route::apiResource('hikes', HikeController::class);
+    Route::post('hikes/register', [HikeController::class, 'registerHike']);
+
+    Route::apiResource('group-hikes', GroupHikeController::class);
+    Route::post('group-hike-attendees', [GroupHikeAttendeeController::class, 'store']);
+    Route::post('payments', [PaymentController::class, 'store']);
+
+    Route::apiResource('reviews', ReviewController::class);
+    Route::get('users', [UserController::class, 'index']);
+    Route::get('users/{id}', [UserController::class, 'show']);
+    Route::post('users/{id}/follow', [UserController::class, 'follow']);
+    Route::post('users/{id}/unfollow', [UserController::class, 'unfollow']);
+    Route::get('following', [UserController::class, 'following']);
+
     Route::post('/about', function () {
         return Response::json([
             'name' => 'Abigail',
@@ -81,3 +108,18 @@ Route::middleware('auth:sanctum')->group(function () {
         ]);
     });
 });
+$links = [
+    // List of all the API endpoints available
+    // 'http://localhost:8000/groups',
+    // 'http://localhost:8000/groups/{group}/approve-member/{user}',
+    // 'http://localhost:8000/groups/{group}/reject-member/{user}',
+    // 'http://localhost:8000/groups/{group}/members',
+    // 'http://localhost:8000/groups/{group}/join-requests',
+    // 'http://localhost:8000/groups/{group}/request-to-join',
+    // 'http://localhost:8000/hikes',
+    // 'http://localhost:8000/hikes/register',
+    // 'http://localhost:8000/group-hikes',
+    // 'http://localhost:8000/group-hike-attendees',
+    // 'http://localhost:8000/payments',
+    // 'http://localhost:8000/reviews',
+];
