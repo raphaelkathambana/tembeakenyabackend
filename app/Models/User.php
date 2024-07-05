@@ -49,23 +49,40 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 
-    /**
-     * Get the role associated with the user.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function role()
+    public function groups()
     {
-        return $this->belongsTo(Role::class, 'roleNo');
+        return $this->belongsToMany(Group::class, 'users_groups');
     }
 
-    /**
-     * Get the group associated with the user.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function group()
+    public function guideAdminsGroups()
     {
-        return $this->belongsTo(Group::class, 'groupNo');
+        return $this->hasMany(Group::class, 'guide_id');
+    }
+
+    public function hikes()
+    {
+        return $this->hasMany(Hike::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');
+    }
+
+    public function calculateStats()
+    {
+        $this->no_of_hikes = $this->hikes()->count();
+        $this->total_distance_walked = $this->hikes()->sum('distance');
+        $this->no_of_steps_taken = $this->hikes()->sum('steps');
+        $this->save();
     }
 }

@@ -7,13 +7,17 @@ use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
+
+    public static $superAdmin;
+    public static $guides;
+    public static $hikers;
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run() : void
     {
         // create a super administrator
-        \App\Models\User::factory()->create([
+        self::$superAdmin = \App\Models\User::factory()->create([
             'firstName' => 'Super',
             'lastName' => 'Admin',
             'username' => 'superadmin',
@@ -21,17 +25,13 @@ class UserSeeder extends Seeder
             'email' => 'codeclimberske@gmail.com',
         ]);
 
-        // create a guide
-        \App\Models\User::factory()->create([
-            'firstName' => 'Hike',
-            'lastName' => 'Guide',
-            'username' => 'guide',
+        // create 3 guide
+        self::$guides = \App\Models\User::factory()->count(3)->create([
             'roleNo' => 2,
-            'email' => 'hikeguide@example.com',
         ]);
 
-        // create 3 hikers
-        \App\Models\User::factory()->count(5)->create([
+        // create 6 hikers
+        self::$hikers = \App\Models\User::factory()->count(6)->create([
             'roleNo' => 1,
         ]);
 
