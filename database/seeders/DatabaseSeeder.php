@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
             UserSeeder::class,
             GroupSeeder::class,
+            HikeSeeder::class,
+            GroupHikeSeeder::class,
+            GroupHikeAttendeeSeeder::class,
         ]);
     }
 }
