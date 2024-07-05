@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->string('groupName');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->unsignedBigInteger('guide_id');
+            $table->foreign('guide_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

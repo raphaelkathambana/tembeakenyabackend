@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class GroupFactory extends Factory
     public function definition(): array
     {
         return [
-            'groupName' => fake()->company(),
+            'name' => fake()->word(),
+            'description' => fake()->sentence(),
+            'guide_id' => fake()->randomDigitNotZero(),
         ];
     }
 }

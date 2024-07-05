@@ -4,10 +4,12 @@ namespace App\Policies;
 
 use App\Models\Group;
 use App\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
 class GroupPolicy
 {
+    use HandlesAuthorization;
     /**
      * Determine whether the user can view any models.
      */
@@ -44,8 +46,8 @@ class GroupPolicy
      */
     public function update(User $user, Group $group)
     {
-        // updates only by guides who are in the group or super admins
-        return ($user->roleNo === 2 && $user->groupNo === $group->groupNo) || $user->roleNo === 3
+        // updates only by guides who are the group admin or super admins
+        return $user->roleNo === 3 || $user->id === $group->guide_id
             ? Response::allow()
             : Response::deny('You are not authorized to update this group.');
     }
@@ -59,5 +61,20 @@ class GroupPolicy
         return $user->roleNo === 3
             ? Response::allow()
             : Response::deny('You are not authorized to delete this group.');
+    }
+
+    public function approveMember(User $user, Group $group)
+    {
+        return $user->roleNo === 3 || $user->id === $group->guide_id;
+    }
+
+    public function rejectMember(User $user, Group $group)
+    {
+        return $user->roleNo === 3 || $user->id === $group->guide_id;
+    }
+
+    public function viewJoinRequests(User $user, Group $group)
+    {
+        return $user->roleNo === 3 || $user->id === $group->guide_id;
     }
 }

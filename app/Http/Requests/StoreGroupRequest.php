@@ -24,12 +24,9 @@ class StoreGroupRequest extends FormRequest
     public function rules() : array
     {
         return [
-            'groupName' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique(Group::class)
-            ],
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'guide_id' => 'required|exists:users,id'
         ];
     }
 }

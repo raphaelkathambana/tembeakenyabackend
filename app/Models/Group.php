@@ -12,26 +12,35 @@ class Group extends Model
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
-        'groupName',
+        'name',
+        'description',
+        'guide_id'
     ];
 
     /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
+     * Get the guide (admin) of the group.
      */
-    public $timestamps = true;
+    public function guide()
+    {
+        return $this->belongsTo(User::class, 'guide_id');
+    }
 
     /**
-     * Get the users associated with the group.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * Get the members of the group.
      */
-    public function users()
+    public function members()
     {
-        return $this->hasMany(User::class, 'groupNo');
+        return $this->belongsToMany(User::class, 'users_groups');
+    }
+
+    /**
+     * Get the hikes related to the group.
+     */
+    public function hikes()
+    {
+        return $this->hasMany(Hike::class);
     }
 }
