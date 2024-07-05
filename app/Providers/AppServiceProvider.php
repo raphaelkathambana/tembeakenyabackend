@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\ServiceProvider;
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        JsonResource::withoutWrapping();
         VerifyEmail::toMailUsing(function (object $notifiable, string $verificationUrl) {
             return (new MailMessage)
             ->subject(Lang::get('Verify Email Address'))
@@ -31,7 +33,6 @@ class AppServiceProvider extends ServiceProvider
             ->line(Lang::get('If you did not create an account, no further action is required.'));
         });
         ResetPassword::createUrlUsing(function($notifiable, $token) {
-            // return 'https://tembeakenyabackend.fly.dev/api/v1/reset-password/' . $token. '?email=' . $notifiable->getEmailForPasswordReset();
             return url(route('api.password.reset', [
                 'token' => $token,
                 'email' => $notifiable->getEmailForPasswordReset(),
