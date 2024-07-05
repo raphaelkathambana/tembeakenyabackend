@@ -14,6 +14,6 @@ class APILoginResponse implements LoginResponseContract
             'message' => 'Logged in successfully.',
             'user' => $request->user(),
             'token' => session('login_token'), // Retrieve the token from the session
-        ]);
+        ], 200);
     }
 }
