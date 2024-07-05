@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('username');
-            $table->integer('roleNo');
+            $table->unsignedBigInteger('roleNo');
             $table->foreign('roleNo')->references('roleNo')->on('roles')->onUpdate('cascade')->onDelete('cascade');
         });
     }
