@@ -20,6 +20,8 @@ class GroupHikeFactory extends Factory
     public function definition(): array
     {
         return [
+            'name' => fake()->name(),
+            'description' => fake()->sentence(),
             'group_id' => fake()->randomDigitNotZero(),
             'hike_id' => fake()->randomDigitNotZero(),
             'guide_id' => fake()->randomDigitNotZero(),
