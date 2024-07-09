@@ -53,7 +53,7 @@ class GroupController extends Controller
     public function show($id)
     {
         // get the group
-        $group = Group::with(['hikes', 'members'])->findOrFail($id);
+        $group = Group::with(['groupHikes', 'members'])->findOrFail($id);
         // return the group
         return (new GroupResource($group))
             ->response()

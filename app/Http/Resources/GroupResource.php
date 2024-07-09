@@ -20,9 +20,10 @@ class GroupResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'guide_id' => $this->guide_id,
+            'image_id' => $this->image_id,
             'guide' => new UserResource($this->whenLoaded('guide')),
             'members' => UserResource::collection($this->whenLoaded('members')),
-            'hikes' => HikeResource::collection($this->whenLoaded('hikes')),
+            'group-hikes' => GroupHikeResource::collection($this->whenLoaded('groupHikes')),
         ];
     }
 }

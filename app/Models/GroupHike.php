@@ -9,7 +9,12 @@ class GroupHike extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'group_id', 'hike_id', 'guide_id', 'hike_date'
+        'name',
+        'description',
+        'group_id',
+        'hike_id',
+        'guide_id',
+        'hike_date'
     ];
 
     public function group()

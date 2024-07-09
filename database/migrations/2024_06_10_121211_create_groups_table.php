@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->unsignedBigInteger('guide_id');
+            $table->string('image_id')->default('defaultProfilePic');
             $table->foreign('guide_id')->references('id')->on('users');
             $table->timestamps();
         });

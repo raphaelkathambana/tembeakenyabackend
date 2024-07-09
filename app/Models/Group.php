@@ -17,7 +17,17 @@ class Group extends Model
     protected $fillable = [
         'name',
         'description',
-        'guide_id'
+        'guide_id',
+        'image_id',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'hike_date' => 'datetime',
     ];
 
     /**
@@ -39,8 +49,8 @@ class Group extends Model
     /**
      * Get the hikes related to the group.
      */
-    public function hikes()
+    public function groupHikes()
     {
-        return $this->hasMany(Hike::class);
+        return $this->hasMany(GroupHike::class);
     }
 }

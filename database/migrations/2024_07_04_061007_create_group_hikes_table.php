@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('group_hikes', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->date('hike_date');
             $table->unsignedBigInteger('group_id');
             $table->unsignedBigInteger('hike_id');
             $table->unsignedBigInteger('guide_id'); // Guide user ID
-            $table->date('hike_date');
             $table->timestamps();
 
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');

@@ -16,6 +16,8 @@ class GroupHikeResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
             'group_id' => $this->group_id,
             'hike_id' => $this->hike_id,
             'guide_id' => $this->guide_id,
