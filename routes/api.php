@@ -95,6 +95,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('users/{id}/follow', [UserController::class, 'follow']);
     Route::post('users/{id}/unfollow', [UserController::class, 'unfollow']);
     Route::get('following', [UserController::class, 'following']);
+    Route::get('followers', [UserController::class, 'followers']);
 
     Route::post('/about', function () {
         return Response::json([
