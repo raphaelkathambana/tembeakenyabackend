@@ -15,8 +15,8 @@ return new class extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('username');
-            $table->unsignedBigInteger('roleNo');
-            $table->foreign('roleNo')->references('roleNo')->on('roles')->onUpdate('cascade')->onDelete('cascade');
+            // $table->unsignedBigInteger('role_id')->change();
+            // $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->dropColumn('firstName');
             $table->dropColumn('lastName');
             $table->dropColumn('username');
-            $table->dropColumn('roleNo');
+            // $table->dropColumn('role_id');
         });
     }
 };

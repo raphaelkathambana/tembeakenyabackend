@@ -29,7 +29,7 @@ class GroupHikePolicy
      */
     public function create(User $user): bool
     {
-        return $user->roleNo === 2 || $user->roleNo === 3; // Guides and Super Admins
+        return $user->role_id === 2 || $user->role_id === 3; // Guides and Super Admins
     }
 
     /**
@@ -37,7 +37,7 @@ class GroupHikePolicy
      */
     public function update(User $user, GroupHike $groupHike): bool
     {
-        return $user->roleNo === 3 || $user->id === $groupHike->guide_id;
+        return $user->role_id === 3 || $user->id === $groupHike->guide_id;
     }
 
     /**
@@ -45,7 +45,7 @@ class GroupHikePolicy
      */
     public function delete(User $user, GroupHike $groupHike): bool
     {
-        return $user->roleNo === 3 || $user->id === $groupHike->guide_id;
+        return $user->role_id === 3 || $user->id === $groupHike->guide_id;
     }
 
     // /**

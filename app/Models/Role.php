@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * The Role model represents a role in the application.
  */
-class Role extends Model
+class Role extends \TCG\Voyager\Models\Role
 {
     use HasFactory;
 
@@ -18,8 +18,8 @@ class Role extends Model
      * @var array
      */
     protected $fillable = [
-        'roleName',
-        'roleNo',
+        'name',
+        'role_id',
     ];
 
     /**
@@ -36,6 +36,6 @@ class Role extends Model
      */
     public function users()
     {
-        return $this->hasMany(User::class, 'roleNo');
+        return $this->hasMany(User::class, 'user_roles', 'role_id');
     }
 }

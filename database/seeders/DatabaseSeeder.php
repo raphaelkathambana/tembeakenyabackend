@@ -15,7 +15,9 @@ class DatabaseSeeder extends Seeder
         //call the seeders
         $this->call([
             RolesSeeder::class,
+            VoyagerDatabaseSeeder::class,
             UserSeeder::class,
+            UsersTableSeeder::class,
             GroupSeeder::class,
             HikeSeeder::class,
             GroupHikeSeeder::class,

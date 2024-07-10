@@ -29,9 +29,9 @@ class UserFactory extends Factory
             'username' => fake()->unique()->userName(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
-            'roleNo' => 1, // default role is hiker
+            'role_id' => 1, // default role is hiker
         ];
     }
 

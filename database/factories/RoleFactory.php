@@ -18,8 +18,8 @@ class RoleFactory extends Factory
     {
         return [
             // create the role factory
-            'roleName' => fake()->randomElement(['User', 'Admin', 'Super Admin']),
-            'roleNo' => fake()->randomElement([1,2,3]),
+            'name' => fake()->randomElement(['User', 'Admin', 'Super Admin']),
+            'id' => fake()->randomElement([1,2,3]),
         ];
     }
 }

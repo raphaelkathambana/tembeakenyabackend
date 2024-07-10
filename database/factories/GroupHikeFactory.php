@@ -19,8 +19,19 @@ class GroupHikeFactory extends Factory
      */
     public function definition(): array
     {
+        $names = [
+            'Trek to Kenze gorge',
+            'Hike to Longonot',
+            'Swim in Ilovoto Falls',
+            'Scaling Kinangop',
+            'Abadare Part 1, Mt. Kilimambogo',
+            'Abadare Part 2, Elephant Hill',
+            'Abadare Part 3, Ole Satima',
+            'Abadare Part 4, Rurimeria Hill',
+            'Abadare Part 5, 7 Ponds',
+        ];
         return [
-            'name' => fake()->name(),
+            'name' => fake()->randomElement($names),
             'description' => fake()->sentence(),
             'group_id' => fake()->randomDigitNotZero(),
             'hike_id' => fake()->randomDigitNotZero(),

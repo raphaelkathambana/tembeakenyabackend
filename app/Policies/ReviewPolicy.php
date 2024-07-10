@@ -29,7 +29,7 @@ class ReviewPolicy
      */
     public function create(User $user): bool
     {
-        return $user->roleNo === 1; // Hikers
+        return $user->role_id === 1; // Hikers
     }
 
     /**
@@ -37,7 +37,7 @@ class ReviewPolicy
      */
     public function update(User $user, Review $review): bool
     {
-        return $user->roleNo === 3 || $user->id === $review->user_id;
+        return $user->role_id === 3 || $user->id === $review->user_id;
     }
 
     /**
@@ -45,7 +45,7 @@ class ReviewPolicy
      */
     public function delete(User $user, Review $review): bool
     {
-        return $user->roleNo === 3 || $user->id === $review->user_id;
+        return $user->role_id === 3 || $user->id === $review->user_id;
     }
 
     // /**

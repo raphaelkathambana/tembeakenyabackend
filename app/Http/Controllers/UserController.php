@@ -44,6 +44,13 @@ class UserController extends Controller
         return new UserCollection($following);
     }
 
+    public function followers(Request $request)
+    {
+        $user = auth()->user();
+        $followers = $user->followers()->paginate(10);
+        return new UserCollection($followers);
+    }
+
     public function follow($id)
     {
         $user = auth()->user();

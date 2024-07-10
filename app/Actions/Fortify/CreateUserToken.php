@@ -15,13 +15,13 @@ class CreateUserToken
         }
 
         // Check the user role
-        if ($request->user()->roleNo == null) {
+        if ($request->user()->role_id == null) {
             throw new \Exception('User role is not set.');
             // return $next($request);
 
         }
         // create a user variable
-        $role = $request->user()->roleNo;
+        $role = $request->user()->role_id;
         switch ($role) {
             case 1:
                 // Create a token for the authenticated user

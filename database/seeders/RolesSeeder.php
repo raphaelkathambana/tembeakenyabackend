@@ -13,18 +13,36 @@ class RolesSeeder extends Seeder
      */
     public function run(): void
     {
+        $role = Role::firstOrNew(['name' => 'hiker']);
+        if (!$role->exists) {
+            $role->fill([
+                'display_name' => __('voyager::seeders.roles.user'),
+            ])->save();
+        }
+        $role = Role::firstOrNew(['name' => 'guide']);
+        if (!$role->exists) {
+            $role->fill([
+                'display_name' => __('voyager::seeders.roles.admin'),
+            ])->save();
+        }
+        $role = Role::firstOrNew(['name' => 'admin']);
+        if (!$role->exists) {
+            $role->fill([
+                'display_name' => __('voyager::seeders.roles.admin'),
+            ])->save();
+        }
         //create 3 roles: hiker role, guide role and admin role
-        Role::factory()->create([
-            'roleName' => 'Hiker',
-            'roleNo' => 1,
-        ]);
-        Role::factory()->create([
-            'roleName' => 'Guide',
-            'roleNo' => 2,
-        ]);
-        Role::factory()->create([
-            'roleName' => 'Admin',
-            'roleNo' => 3,
-        ]);
+        // Role::factory()->create([
+        //     'roleName' => 'hiker',
+        //     'id' => 1,
+        // ]);
+        // Role::factory()->create([
+        //     'roleName' => 'guide',
+        //     'id' => 2,
+        // ]);
+        // Role::factory()->create([
+        //     'roleName' => 'admin',
+        //     'id' => 3,
+        // ]);
     }
 }

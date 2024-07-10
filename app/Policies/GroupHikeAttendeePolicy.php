@@ -21,7 +21,7 @@ class GroupHikeAttendeePolicy
      */
     public function view(User $user, GroupHikeAttendee $groupHikeAttendee): bool
     {
-        return $user->roleNo === 3 || $user->id === $groupHikeAttendee->user_id;
+        return $user->role_id === 3 || $user->id === $groupHikeAttendee->user_id;
     }
 
     /**
@@ -29,7 +29,7 @@ class GroupHikeAttendeePolicy
      */
     public function create(User $user): bool
     {
-        return $user->roleNo === 1; // Hikers
+        return $user->role_id === 1; // Hikers
     }
 
     /**
@@ -37,7 +37,7 @@ class GroupHikeAttendeePolicy
      */
     public function update(User $user, GroupHikeAttendee $groupHikeAttendee): bool
     {
-        return $user->roleNo === 3 || $user->id === $groupHikeAttendee->user_id;
+        return $user->role_id === 3 || $user->id === $groupHikeAttendee->user_id;
     }
 
     /**
@@ -45,7 +45,7 @@ class GroupHikeAttendeePolicy
      */
     public function delete(User $user, GroupHikeAttendee $groupHikeAttendee): bool
     {
-        return $user->roleNo === 3 || $user->id === $groupHikeAttendee->user_id;
+        return $user->role_id === 3 || $user->id === $groupHikeAttendee->user_id;
     }
 
     // /**

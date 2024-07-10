@@ -21,7 +21,7 @@ class GroupHikeSeeder extends Seeder
 
         // Create 3 group hikes, one for each group
         foreach ($groups as $group) {
-            $groupHike = GroupHike::factory()->create([
+            GroupHike::factory()->create([
                 'group_id' => $group->id,
                 'hike_id' => Hike::inRandomOrder()->first()->id,
                 'guide_id' => $group->guide_id,

@@ -15,7 +15,7 @@ class GroupSeeder extends Seeder
     public function run() : void
     {
         // Get the users
-        $superAdmin = User::where(['roleNo' => 3])->first();
+        $superAdmin = User::where(['role_id' => 3])->first();
         $guides = [
             User::findOrFail(2),
             User::findOrFail(3),
