@@ -27,6 +27,7 @@ class UpdateGroupRequest extends FormRequest
             'name' => 'sometimes|required|string|max:255',
             'description' => 'sometimes|required|string|max:1000',
             'guide_id' => 'sometimes|required|exists:users,id',
+            'image_id' => 'sometimes|required|'
         ];
     }
 }
