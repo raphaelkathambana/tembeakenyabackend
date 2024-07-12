@@ -22,10 +22,12 @@ class StoreGroupHikeRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
             'group_id' => 'required|exists:groups,id',
             'hike_id' => 'required|exists:hikes,id',
             'guide_id' => 'required|exists:users,id',
-            'hike_date' => 'required|date'
+            'hike_date' => 'required|date',
         ];
     }
 }
