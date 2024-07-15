@@ -4,6 +4,7 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GroupHikeAttendeeController;
 use App\Http\Controllers\GroupHikeController;
 use App\Http\Controllers\HikeController;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
@@ -96,6 +97,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('users/{id}/unfollow', [UserController::class, 'unfollow']);
     Route::get('following', [UserController::class, 'following']);
     Route::get('followers', [UserController::class, 'followers']);
+
+    Route::get('/landmarks', [MapController::class, 'getLandmarks']);
+    Route::post('/hikes/{id}/route', [MapController::class, 'getRoute']);
 
     Route::post('/about', function () {
         return Response::json([
