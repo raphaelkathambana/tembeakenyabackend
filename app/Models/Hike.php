@@ -11,7 +11,7 @@ class Hike extends Model
 
     protected $fillable = [
         'name',
-        'map_data',
+        'map_data_id', // This should be a foreign key to MapData
         'distance',
         'estimated_duration',
         'group_id',
@@ -46,5 +46,9 @@ class Hike extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+    public function mapData()
+    {
+        return $this->belongsTo(MapData::class, 'map_data_id');
     }
 }

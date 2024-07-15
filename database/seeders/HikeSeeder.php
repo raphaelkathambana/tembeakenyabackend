@@ -18,25 +18,35 @@ class HikeSeeder extends Seeder
     {
         // Create 4 hikes
         $mapData1 = MapData::where('name', 'Hike Location 1')->firstOrFail();
-        Hike::create([
+        Hike::factory()->create([
             'name' => 'Hike 1',
-            'map_data' => $mapData1->toArray(),
-            'distance' => 10.5,
-            'estimated_duration' => '02:30:00',
+            'map_data_id' => $mapData1->id,
+            'distance' => 5.0,
+            'estimated_duration' => '02:00:00',
             'group_id' => 1,
             'user_id' => 1,
-            'waypoints' => $mapData1->waypoints,
+            'waypoints' => [
+                ['latitude' => -1.240787, 'longitude' => 36.819135],
+                ['latitude' => -1.232238, 'longitude' => 36.826663],
+                ['latitude' => -1.244848, 'longitude' => 36.839919],
+                ['latitude' => -1.243310, 'longitude' => 36.820191],
+            ],
         ]);
 
         $mapData2 = MapData::where('name', 'Hike Location 2')->firstOrFail();
-        Hike::create([
+        Hike::factory()->create([
             'name' => 'Hike 2',
-            'map_data' => $mapData2->toArray(),
-            'distance' => 8.0,
-            'estimated_duration' => '01:45:00',
+            'map_data_id' => $mapData2->id,
+            'distance' => 3.0,
+            'estimated_duration' => '01:30:00',
             'group_id' => 2,
             'user_id' => 2,
-            'waypoints' => $mapData2->waypoints,
+            'waypoints' => [
+                ['latitude' => -1.274436, 'longitude' => 36.800969],
+                ['latitude' => -1.277689, 'longitude' => 36.801502],
+                ['latitude' => -1.277232, 'longitude' => 36.797007],
+                ['latitude' => -1.274436, 'longitude' => 36.800969],
+            ],
         ]);
 
         $hikes = Hike::factory()->count(2)->create();

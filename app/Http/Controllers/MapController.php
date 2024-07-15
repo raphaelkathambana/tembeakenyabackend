@@ -24,23 +24,26 @@ class MapController extends Controller
 
         $mapData = $hike->mapData;
 
-        $response = Http::get('https://api.mapbox.com/directions/v5/mapbox/walking/' . $mapData->longitude . ',' . $mapData->latitude . ';' . $request->longitude . ',' . $request->latitude, [
-            'access_token' => env('MAPBOX_ACCESS_TOKEN'),
-            'annotations' => 'distance,duration',
-            'continue_straight' => true,
-            'geometries' => 'geojson',
-            'language' => 'en',
-            'overview' => 'full',
-            'steps' => true
-        ]);
-        if ($response->successful()) {
-            $route = $response->json();
-            return response()->json([
-                'hike' => $hike,
-                'route' => $route
+        try {
+            $response = Http::get('https://api.mapbox.com/directions/v5/mapbox/walking/' . $request->longitude . ',' . $request->latitude . ';' . $mapData->longitude . ',' . $mapData->latitude, [
+                'annotations' => 'distance,duration',
+                'continue_straight' => true,
+                'geometries' => 'geojson',
+                'language' => 'en',
+                'overview' => 'full',
+                'steps' => true,
+                'access_token' => env('MAPBOX_ACCESS_TOKEN'),
             ]);
-        } else {
-            return response()->json(['error' => 'Unable to fetch route'], 500);
+
+            if ($response->successful()) {
+                $route = $response->json();
+                return response()->json([
+                    'hike' => $hike,
+                    'route' => $route
+                ]);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Server error: ' . $e->getMessage()], 500);
         }
     }
 }

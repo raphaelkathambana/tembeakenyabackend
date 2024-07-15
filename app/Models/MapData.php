@@ -26,8 +26,12 @@ class MapData extends Model
     /**
      * returns the related hike
      */
-    public function hike()
+    // public function hike()
+    // {
+    //     return $this->belongsTo(Hike::class);
+    // }
+    public function hikes()
     {
-        return $this->belongsTo(Hike::class);
+        return $this->hasMany(Hike::class, 'map_data_id');
     }
 }
