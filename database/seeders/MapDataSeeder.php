@@ -12,25 +12,29 @@ class MapDataSeeder extends Seeder
     {
         MapData::create([
             'name' => 'Hike Location 1',
-            'latitude' => 37.7749,
-            'longitude' => -122.4194,
-            'description' => 'Beautiful hike in the city',
+            'latitude' => -1.240035,
+            'longitude' => 36.832513,
+            'description' => 'Karura Forest A',
             'image' => 'image_url_1',
             'waypoints' => [
-                ['latitude' => 37.775, 'longitude' => -122.418],
-                ['latitude' => 37.776, 'longitude' => -122.417]
+                ['latitude' => -1.240787, 'longitude' => 36.819135],
+                ['latitude' => -1.232238, 'longitude' => 36.826663],
+                ['latitude' => -1.244848, 'longitude' => 36.839919],
+                ['latitude' => -1.243310, 'longitude' => 36.820191],
             ],
         ]);
 
         MapData::create([
             'name' => 'Hike Location 2',
-            'latitude' => 34.0522,
-            'longitude' => -118.2437,
-            'description' => 'Scenic hike in LA',
+            'latitude' => -1.277202,
+            'longitude' => 36.800441,
+            'description' => 'Nairobi Arboretum',
             'image' => 'image_url_2',
             'waypoints' => [
-                ['latitude' => 34.052, 'longitude' => -118.244],
-                ['latitude' => 34.053, 'longitude' => -118.245]
+                ['latitude' => -1.274436, 'longitude' => 36.800969],
+                ['latitude' => -1.277689, 'longitude' => 36.801502],
+                ['latitude' => -1.277232, 'longitude' => 36.797007],
+                ['latitude' => -1.274436, 'longitude' => 36.800969],
             ],
         ]);
     }
