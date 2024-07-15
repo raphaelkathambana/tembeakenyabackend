@@ -18,7 +18,8 @@ return new class extends Migration
             $table->decimal('longitude', 11, 8);
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->unsignedBigInteger('hike_id');
+            $table->text('waypoints')->nullable();
+            $table->unsignedBigInteger('hike_id')->nullable();
             $table->timestamps();
 
             $table->foreign('hike_id')->references('id')->on('hikes')->onDelete('cascade');
