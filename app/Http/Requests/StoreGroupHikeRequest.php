@@ -28,6 +28,7 @@ class StoreGroupHikeRequest extends FormRequest
             'hike_id' => 'required|exists:hikes,id',
             'guide_id' => 'required|exists:users,id',
             'hike_date' => 'required|date',
+            'hike_fee' => 'required|numeric',
         ];
     }
 }
