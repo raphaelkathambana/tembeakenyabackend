@@ -18,7 +18,7 @@ class HikeSeeder extends Seeder
     {
         // Create 4 hikes
         $mapData1 = MapData::where('name', 'Hike Location 1')->firstOrFail();
-        Hike::factory()->create([
+        $hikeOne = Hike::factory()->create([
             'name' => 'Hike 1',
             'map_data_id' => $mapData1->id,
             'distance' => 5.0,
@@ -32,9 +32,13 @@ class HikeSeeder extends Seeder
                 ['latitude' => -1.243310, 'longitude' => 36.820191],
             ],
         ]);
+        // add the new hike's ID to the map data
+        $mapData1->hike_id = $hikeOne->id;
+        // save it to the database
+        $mapData1->save();
 
         $mapData2 = MapData::where('name', 'Hike Location 2')->firstOrFail();
-        Hike::factory()->create([
+        $hikeTwo = Hike::factory()->create([
             'name' => 'Hike 2',
             'map_data_id' => $mapData2->id,
             'distance' => 3.0,
@@ -48,6 +52,10 @@ class HikeSeeder extends Seeder
                 ['latitude' => -1.274436, 'longitude' => 36.800969],
             ],
         ]);
+        // add the new hike's ID to the map data
+        $mapData2->hike_id = $hikeTwo->id;
+        // save it to the database
+        $mapData2->save();
 
         $hikes = Hike::factory()->count(2)->create();
         // Get all hikers
