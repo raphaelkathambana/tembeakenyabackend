@@ -39,3 +39,4 @@ Route::get('/.well-known/assetlinks.json', function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+Route::redirect('/code-climbers', 'https://camicollect.africa/page/code-climbers', 301);
