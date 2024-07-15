@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             UsersTableSeeder::class,
             GroupSeeder::class,
+            MapDataSeeder::class,
             HikeSeeder::class,
             GroupHikeSeeder::class,
             GroupHikeAttendeeSeeder::class,

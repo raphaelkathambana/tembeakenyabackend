@@ -14,7 +14,8 @@ class GroupHike extends Model
         'group_id',
         'hike_id',
         'guide_id',
-        'hike_date'
+        'hike_date',
+        'hike_fee'
     ];
 
     public function group()

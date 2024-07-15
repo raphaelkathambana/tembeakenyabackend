@@ -10,8 +10,16 @@ class Hike extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'map_data', 'distance', 'estimated_duration', 'group_id', 'user_id'
+        'name',
+        'map_data',
+        'distance',
+        'estimated_duration',
+        'group_id',
+        'user_id',
+        'waypoints',
     ];
+
+
 
     /**
      * The attributes that should be cast.
@@ -21,7 +29,9 @@ class Hike extends Model
     protected $casts = [
         'map_data' => 'array',
         'estimated_duration' => 'datetime:H:i:s',
+        'waypoints' => 'array', // Cast waypoints as an array
     ];
+
 
     public function group()
     {

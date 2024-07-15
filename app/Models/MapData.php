@@ -15,7 +15,13 @@ class MapData extends Model
         'longitude',
         'description',
         'image',
+        'waypoints', // New field for storing waypoints
     ];
+
+    protected $casts = [
+        'waypoints' => 'array', // Cast waypoints as an array
+    ];
+
 
     /**
      * returns the related hike

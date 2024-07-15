@@ -25,6 +25,7 @@ class HikeFactory extends Factory
             'estimated_duration' => fake()->time(),
             'group_id' => fake()->randomElement([1,2,3]),
             'user_id' => fake()->randomDigitNotZero(),
+            'waypoints' => json_encode(['waypoints' => 'data']),
         ];
     }
 }
