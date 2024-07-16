@@ -15,7 +15,8 @@ class GroupHikeController extends Controller
     public function index()
     {
         $groupHikes = GroupHike::with(['group', 'hike', 'guide', 'attendees'])->get();
-        return GroupHikeResource::collection($groupHikes);
+        return (GroupHikeResource::collection($groupHikes))
+                    ->response();
     }
 
     // /**

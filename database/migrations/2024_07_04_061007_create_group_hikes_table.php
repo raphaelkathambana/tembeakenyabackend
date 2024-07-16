@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->date('hike_date');
+            $table->double('hike_fee');
             $table->unsignedBigInteger('group_id');
             $table->unsignedBigInteger('hike_id');
             $table->unsignedBigInteger('guide_id'); // Guide user ID
-            $table->double('hike_fee')->nullable();
             $table->timestamps();
 
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');

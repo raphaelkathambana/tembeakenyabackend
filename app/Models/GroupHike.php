@@ -11,11 +11,15 @@ class GroupHike extends Model
     protected $fillable = [
         'name',
         'description',
+        'hike_fee',
         'group_id',
         'hike_id',
         'guide_id',
         'hike_date',
-        'hike_fee'
+    ];
+
+    protected $casts = [
+        'hike_date' => 'datetime:Y-m-d',
     ];
 
     public function group()

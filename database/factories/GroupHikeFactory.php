@@ -37,7 +37,7 @@ class GroupHikeFactory extends Factory
             'hike_id' => fake()->randomDigitNotZero(),
             'guide_id' => fake()->randomDigitNotZero(),
             'hike_date' => fake()->dateTimeBetween('now', '+1 month'),
-            'hike_fee' => fake()->randomDigitNotZero(),
+            'hike_fee' => fake()->randomFloat(2, 2000, 5000),
         ];
     }
 }

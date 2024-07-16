@@ -22,7 +22,7 @@ class GroupHikeResource extends JsonResource
             'hike_id' => $this->hike_id,
             'guide_id' => $this->guide_id,
             'hike_date' => $this->hike_date,
-            'hike_fee' -> $this->hike_fee,
+            'hike_fee' => $this->hike_fee,
             'group' => new GroupResource($this->whenLoaded('group')),
             'hike' => new HikeResource($this->whenLoaded('hike')),
             'guide' => new UserResource($this->whenLoaded('guide')),
