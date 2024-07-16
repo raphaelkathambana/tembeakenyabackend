@@ -33,6 +33,8 @@ class GroupHikeController extends Controller
     public function store(StoreGroupHikeRequest $request)
     {
         $groupHike = GroupHike::create($request->validated());
+        // make the guide an attendee
+        $groupHike->attendees()->attach($groupHike->guide_id);
         return new GroupHikeResource($groupHike);
     }
 

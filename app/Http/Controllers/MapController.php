@@ -35,25 +35,35 @@ class MapController extends Controller
                 'access_token' => Config::get('map.mapbox_access_token'),
             ]);
 
-            if ($response->successful()) {
-                $route = $response->json();
-                return response()->json([
-                    'hike' => $hike,
-                    'route' => $route
-                ]);
-            } else {
-                return response()->json([
-                    'error' => 'Unable to fetch route from Mapbox',
-                    'status' => $response->status(),
-                    'message' => $response->body(),
-            ], 500);
-            }
         } else {
-            // Return waypoints for walking navigation
+            // format the waypoints
+            $coordinates = collect($mapData->waypoints)->map(function($waypoint) {
+                return "{$waypoint['longitude']},{$waypoint['latitude']}";
+            })->implode(';');
+            // Use Mapbox Directions API for walking navigation
+            $response = Http::get('https://api.mapbox.com/directions/v5/mapbox/walking/' .$coordinates, [
+                'annotations' => 'distance,duration',
+                'continue_straight' => 'true',
+                'geometries' => 'geojson',
+                'language' => 'en',
+                'overview' => 'full',
+                'steps' => 'true',
+                'access_token' => Config::get('map.mapbox_access_token'),
+            ]);
+        }
+        if ($response->successful()) {
+            $route = $response->json();
             return response()->json([
                 'hike' => $hike,
-                'waypoints' => $mapData->waypoints
+                'route' => $route
             ]);
+        } else {
+            return response()->json([
+                'error' => 'Unable to fetch route from Mapbox',
+                'status' => $response->status(),
+                'message' => $response->body(),
+                'link' => $response->effectiveUri(),
+        ], 500);
         }
     }
 }
