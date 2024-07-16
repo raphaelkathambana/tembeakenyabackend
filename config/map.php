@@ -1,5 +1,4 @@
 <?php
-//get the mapbox_access_token from .env
 /**
  * Configuration file for map settings.
  *
