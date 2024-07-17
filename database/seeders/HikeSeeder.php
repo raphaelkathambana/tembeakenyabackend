@@ -25,6 +25,7 @@ class HikeSeeder extends Seeder
             'estimated_duration' => '01:43:31',
             'group_id' => 6,
             'user_id' => 3,
+            'image_id' => 'KaruraForest_Image',
             'waypoints' => [
                 ['latitude' => -1.240787, 'longitude' => 36.819135],
                 ['latitude' => -1.232238, 'longitude' => 36.826663],
@@ -45,6 +46,7 @@ class HikeSeeder extends Seeder
             'estimated_duration' => '00:25:13',
             'group_id' => 6,
             'user_id' => 2,
+            'image_id' => 'NairobiArboretum_Image',
             'waypoints' => [
                 ['latitude' => -1.274436, 'longitude' => 36.800969],
                 ['latitude' => -1.277689, 'longitude' => 36.801502],

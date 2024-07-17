@@ -46,7 +46,6 @@ class HikeFactory extends Factory
         ];
         return [
             'name' => fake()->randomElement($hikeNames),
-            'map_data' => json_encode(['map' => 'data']),
             'distance' => fake()->randomFloat(2, 1, 10),
             'estimated_duration' => fake()->time(),
             'group_id' => fake()->randomElement([1,2,3]),

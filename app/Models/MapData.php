@@ -14,7 +14,6 @@ class MapData extends Model
         'latitude',
         'longitude',
         'description',
-        'image',
         'waypoints', // New field for storing waypoints
     ];
 

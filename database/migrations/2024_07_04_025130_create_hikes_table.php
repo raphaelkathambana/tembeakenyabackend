@@ -16,10 +16,10 @@ return new class extends Migration
             $table->unsignedBigInteger('group_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
-            $table->text('map_data');
             $table->double('distance');
             $table->time('estimated_duration');
             $table->text('waypoints');
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');

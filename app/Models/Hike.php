@@ -17,6 +17,7 @@ class Hike extends Model
         'group_id',
         'user_id',
         'waypoints',
+        'image_id'
     ];
 
 
@@ -27,7 +28,6 @@ class Hike extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'map_data' => 'array',
         'estimated_duration' => 'datetime:H:i:s',
         'waypoints' => 'array', // Cast waypoints as an array
     ];

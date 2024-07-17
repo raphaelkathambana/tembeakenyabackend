@@ -23,7 +23,6 @@ class HikeRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'map_data' => 'required|string',
             'distance' => 'required|numeric',
             'estimated_duration' => 'required',
             'group_id' => 'nullable|exists:groups,id',
