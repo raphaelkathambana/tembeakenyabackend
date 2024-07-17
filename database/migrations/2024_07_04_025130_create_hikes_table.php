@@ -19,7 +19,7 @@ return new class extends Migration
             $table->double('distance');
             $table->time('estimated_duration');
             $table->text('waypoints');
-            $table->string('image')->nullable();
+            $table->string('image_id')->nullable();
             $table->timestamps();
 
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
