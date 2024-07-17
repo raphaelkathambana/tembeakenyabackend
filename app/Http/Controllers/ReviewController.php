@@ -14,7 +14,7 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::all();
+        $reviews = Review::with('user')->get();
         return ReviewResource::collection($reviews);
     }
 
@@ -40,7 +40,7 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
-        $review = Review::findOrFail($id);
+        $review = Review::with('user', 'hike')->findOrFail($id);
         return new ReviewResource($review);
     }
 
