@@ -72,4 +72,8 @@ class GroupPolicy
     {
         return $user->role_id === 3 || $user->id === $group->guide_id;
     }
+    public function viewJoinRequests(User $user, Group $group)
+    {
+        return true;
+    }
 }
