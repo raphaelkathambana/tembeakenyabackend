@@ -152,4 +152,24 @@ class GroupController extends Controller
 
         return response()->json(['message' => 'Join request sent successfully'], 201);
     }
+
+    public function leaveGroup($id)
+    {
+        $user = auth()->user();
+        $group = Group::findOrFail($id);
+
+        // Check if the user is an admin (guide) of the group
+        if ($group->guide_id === $user->id) {
+            return response()->json([
+                'message' => 'Group admins cannot leave their own group.'
+            ], 403);
+        }
+
+        // Detach the user from the group members
+        $group->members()->detach($user->id);
+
+        return response()->json([
+            'message' => 'You have successfully left the group.'
+        ], 200);
+    }
 }
