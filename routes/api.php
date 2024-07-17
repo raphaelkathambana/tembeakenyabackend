@@ -82,7 +82,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('groups/{group}/members', [GroupController::class, 'members']);
     Route::get('groups/{group}/join-requests', [GroupController::class, 'joinRequests']);
     Route::post('groups/{group}/request-to-join', [GroupController::class, 'requestToJoin']);
-
+    Route::post('groups/{id}/leave', [GroupController::class, 'leaveGroup']);
+    
     Route::apiResource('hikes', HikeController::class);
     Route::post('hikes/register', [HikeController::class, 'registerHike']);
 
