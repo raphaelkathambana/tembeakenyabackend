@@ -28,7 +28,6 @@ class Hike extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'estimated_duration' => 'datetime:H:i:s',
         'waypoints' => 'array', // Cast waypoints as an array
     ];
 
