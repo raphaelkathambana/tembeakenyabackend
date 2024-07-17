@@ -21,7 +21,8 @@ class GroupHikeAttendeeResource extends JsonResource
             'name' => $this->name,
             'phone_number' => $this->phone_number,
             'email' => $this->email,
-            'emergency_contact' => $this->emergency_contact,
+            'emergency_contact_name' => $this->emergency_contact_name,
+            'emergency_contact_phone_number' => $this->emergency_contact_phone_number,
             'user' => new UserResource($this->whenLoaded('user')),
         ];
     }

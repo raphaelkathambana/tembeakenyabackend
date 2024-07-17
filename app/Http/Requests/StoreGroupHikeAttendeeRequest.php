@@ -27,7 +27,8 @@ class StoreGroupHikeAttendeeRequest extends FormRequest
             'name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:20',
             'email' => 'required|email|max:255',
-            'emergency_contact' => 'required|string|max:255'
+            'emergency_contact_name' => 'required|string|max:255',
+            'emergency_contact_phone_number' => 'required|string|max:255',
         ];
     }
 }

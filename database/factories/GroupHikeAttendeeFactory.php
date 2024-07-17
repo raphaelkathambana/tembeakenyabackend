@@ -24,7 +24,8 @@ class GroupHikeAttendeeFactory extends Factory
             'name' => fake()->name(),
             'phone_number' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),
-            'emergency_contact' => fake()->name() . ', ' . fake()->phoneNumber(),
+            'emergency_contact_name' => fake()->name(),
+            'emergency_contact_phone_number' => fake()->phoneNumber(),
         ];
     }
 }

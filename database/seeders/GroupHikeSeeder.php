@@ -27,18 +27,6 @@ class GroupHikeSeeder extends Seeder
                 'guide_id' => $group->guide_id,
                 'hike_date' => now()->addDays(rand(1, 10)),
             ]);
-
-            // // Register all group members for the group hike
-            // foreach ($group->members as $member) {
-            //     GroupHikeAttendee::factory()->create([
-            //         'group_hike_id' => $groupHike->id,
-            //         'user_id' => $member->id,
-            //         'name' => $member->firstName . ' ' . $member->lastName,
-            //         'phone_number' => $member->phone_number ?? fake()->phoneNumber(),
-            //         'email' => $member->email,
-            //         'emergency_contact' => 'Emergency Contact for ' . $member->firstName,
-            //     ]);
-            // }
         }
     }
 }

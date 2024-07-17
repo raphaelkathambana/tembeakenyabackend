@@ -9,7 +9,13 @@ class GroupHikeAttendee extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'group_hike_id', 'user_id', 'name', 'phone_number', 'email', 'emergency_contact'
+        'group_hike_id',
+        'user_id',
+        'name',
+        'phone_number',
+        'email',
+        'emergency_contact_name',
+        'emergency_contact_phone_number',
     ];
 
     public function groupHike()

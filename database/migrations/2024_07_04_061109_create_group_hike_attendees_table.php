@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone_number');
             $table->string('email');
-            $table->string('emergency_contact');
+            $table->string('emergency_contact_name');
+            $table->string('emergency_contact_phone_number');
             $table->timestamps();
 
             $table->foreign('group_hike_id')->references('id')->on('group_hikes')->onDelete('cascade');
