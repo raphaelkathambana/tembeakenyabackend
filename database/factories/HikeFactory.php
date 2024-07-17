@@ -18,8 +18,34 @@ class HikeFactory extends Factory
      */
     public function definition(): array
     {
+        $hikeNames = [
+            'Kilimanjaro',
+            'Mount Kenya',
+            'Mount Elgon',
+            'Aberdares',
+            'Mau Forest',
+            'Ngong Hills',
+            'Hell\'s Gate',
+            'Mount Longonot',
+            'Mount Suswa',
+            'Mount Marsabit',
+            'Mount Kulal',
+            'Mount Nyiru',
+            'Mount Ololokwe',
+            'Mount Elgon',
+            'Mount Moroto',
+            'Mount Kadam',
+            'Mount Morungole',
+            'Mount Otzi',
+            'Mount Zulia',
+            'Mount Morungole',
+            'Mount Otzi',
+            'Mount Zulia',
+            'Mount Moroto',
+            'Mount Kadam',
+        ];
         return [
-            'name' => fake()->word,
+            'name' => fake()->randomElement($hikeNames),
             'map_data' => json_encode(['map' => 'data']),
             'distance' => fake()->randomFloat(2, 1, 10),
             'estimated_duration' => fake()->time(),
