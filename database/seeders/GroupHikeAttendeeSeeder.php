@@ -24,8 +24,9 @@ class GroupHikeAttendeeSeeder extends Seeder
                     'group_hike_id' => $groupHike->id,
                     'user_id' => $member->id,
                     'name' => $member->firstName . ' ' . $member->lastName,
-                    'phone_number' => $member->phone_number ?? fake()->phoneNumber(),
+                    'phone_number' => $member->phone_number ?? ('2547' . fake()->randomNumber(8, true)),
                     'email' => $member->email,
+                    'emergency_contact_phone_number' => $member->emergency_contact_phone_number ?? ('2547' . fake()->randomNumber(8, true)),
                 ]);
             }
         }
